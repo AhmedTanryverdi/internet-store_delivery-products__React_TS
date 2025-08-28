@@ -1,6 +1,14 @@
-import { createRoot } from "react-dom/client";
-import App from "./src/app";
+import { createRoot } from 'react-dom/client';
+import App from './src/app';
 
-const root = createRoot(document.getElementById("root") as HTMLElement);
+try {
+  const rootElement = document.getElementById('root');
+  if (!rootElement) {
+    throw new Error("Элемент с id 'root' не найден в DOM");
+  }
+  const root = createRoot(rootElement);
 
-root.render(<App />);
+  root.render(<App />);
+} catch (error) {
+  alert(error);
+}
